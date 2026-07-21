@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# eratosthenes:summary=Open the Eratosthenes background switcher
+# eratosthenes:group=theme
+# eratosthenes:name=bg-switcher
+# eratosthenes:aliases=eratosthenes background
+
+ERATOSTHENES_PATH=${ERATOSTHENES_PATH:-$HOME/.local/share/eratosthenes}
+theme_name=$(cat "$HOME/.config/eratosthenes/current/theme.name" 2>/dev/null)
+current_background=$(readlink -f "$HOME/.config/eratosthenes/current/background" 2>/dev/null)
+
+eratosthenes-menu-images \
+  --selected "$current_background" \
+  "$HOME/.config/eratosthenes/current/theme/backgrounds" \
+  "$HOME/.config/eratosthenes/backgrounds/$theme_name"

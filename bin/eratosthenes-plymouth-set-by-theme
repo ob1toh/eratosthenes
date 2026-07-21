@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# eratosthenes:summary=Set the Plymouth boot theme from an Eratosthenes theme
+# eratosthenes:args=<theme-name>
+# eratosthenes:requires-sudo=true
+
+# Resolve a theme by name and apply its unlock.png + colors.toml as the
+# Plymouth boot screen via eratosthenes-plymouth-set.
+
+if [[ $# -ne 1 ]]; then
+  echo "Usage: eratosthenes-plymouth-set-by-theme <theme-name>" >&2
+  exit 1
+fi
+
+theme=$1
+
+if [[ -d ~/.config/eratosthenes/themes/$theme ]]; then
+  theme_dir=~/.config/eratosthenes/themes/$theme
+else
+  theme_dir="$ERATOSTHENES_PATH/themes/$theme"
+fi
+
+bg=$(awk -F'"' '/^background/{print $2}' "$theme_dir/colors.toml")
+text=$(awk -F'"' '/^foreground/{print $2}' "$theme_dir/colors.toml")
+
+exec eratosthenes-plymouth-set "$bg" "$text" "$theme_dir/unlock.png"

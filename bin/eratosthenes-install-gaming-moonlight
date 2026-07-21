@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# eratosthenes:summary=Install Moonlight (NVIDIA GameStream / Sunshine client) for streaming games to this PC.
+# eratosthenes:requires-sudo=true
+
+set -e
+
+echo "Installing Moonlight..."
+eratosthenes-pkg-add moonlight-qt
+
+setsid gtk-launch com.moonlight_stream.Moonlight.desktop >/dev/null 2>&1 &

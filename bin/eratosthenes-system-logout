@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# eratosthenes:summary=Log out after closing application windows
+# eratosthenes:examples=eratosthenes logout | eratosthenes system logout
+# eratosthenes:aliases=eratosthenes logout
+
+nohup bash -c "sleep 2 && uwsm stop" >/dev/null 2>&1 &
+
+# Now close all windows
+eratosthenes-hyprland-window-close-all
+sleep 1 # Allow apps like Chrome to shutdown correctly

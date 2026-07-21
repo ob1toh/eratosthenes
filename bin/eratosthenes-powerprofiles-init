@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# eratosthenes:summary=Set the correct power profile on boot based on current AC/battery state.
+
+if eratosthenes-battery-present && ! eratosthenes-ac-present; then
+  eratosthenes-powerprofiles-set battery
+else
+  eratosthenes-powerprofiles-set ac
+fi

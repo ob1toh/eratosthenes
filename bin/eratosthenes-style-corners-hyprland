@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# eratosthenes:summary=Set or toggle shape of Hyprland window corners
+# eratosthenes:args=[toggle|sharp|round]
+# eratosthenes:examples=eratosthenes style corners hyprland toggle | eratosthenes style corners hyprland round | eratosthenes style corners hyprland sharp
+
+case "${1:-toggle}" in
+  round) set -- on ;;
+  sharp) set -- off ;;
+  toggle) ;;
+  *)
+    echo "Usage: eratosthenes-style-corners-hyprland [toggle|sharp|round]"
+    exit 1
+    ;;
+esac
+
+eratosthenes-hyprland-toggle rounded-corners "$1"

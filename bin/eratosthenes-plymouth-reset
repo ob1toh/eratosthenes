@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# eratosthenes:summary=Restore the default Eratosthenes Plymouth boot theme and SDDM login screen
+# eratosthenes:requires-sudo=true
+
+theme_dir="/usr/share/plymouth/themes/eratosthenes"
+
+sudo find ~/.local/share/eratosthenes/default/plymouth -maxdepth 1 -type f -exec cp -t "$theme_dir/" {} +
+sudo plymouth-set-default-theme eratosthenes
+
+if eratosthenes-cmd-present limine-mkinitcpio; then
+  sudo limine-mkinitcpio
+else
+  sudo mkinitcpio -P
+fi
+
+eratosthenes-refresh-sddm

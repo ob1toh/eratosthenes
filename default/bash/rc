@@ -1,0 +1,6 @@
+source ~/.local/share/eratosthenes/default/bash/envs
+source ~/.local/share/eratosthenes/default/bash/shell
+source ~/.local/share/eratosthenes/default/bash/aliases
+source ~/.local/share/eratosthenes/default/bash/functions
+source ~/.local/share/eratosthenes/default/bash/init
+[[ $- == *i* ]] && bind -f ~/.local/share/eratosthenes/default/bash/inputrc

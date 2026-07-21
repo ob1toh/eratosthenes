@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# eratosthenes:summary=Refresh the SDDM theme from default
+# eratosthenes:requires-sudo=true
+
+sudo rm -rf /usr/share/sddm/themes/eratosthenes
+sudo cp -r $ERATOSTHENES_PATH/default/sddm/eratosthenes /usr/share/sddm/themes/eratosthenes

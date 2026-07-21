@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# eratosthenes:summary=Launch the Eratosthenes bluetooth controls TUI (provided by bluetui).
+
+rfkill unblock bluetooth
+exec eratosthenes-launch-or-focus-tui bluetui

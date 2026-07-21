@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# eratosthenes:summary=Display keyboard brightness level using SwayOSD on the current monitor.
+# eratosthenes:args=<0-100>
+# eratosthenes:examples=eratosthenes swayosd kbd brightness 0 | eratosthenes swayosd kbd brightness 50 | eratosthenes swayosd kbd brightness 100
+
+percent="$1"
+
+progress="$(awk -v p="$percent" 'BEGIN{printf "%.2f", p/100}')"
+[[ $progress == "0.00" ]] && progress="0.01"
+
+eratosthenes-swayosd-client \
+  --custom-icon keyboard-brightness-symbolic \
+  --custom-progress "$progress" \
+  --custom-progress-text "${percent}%"

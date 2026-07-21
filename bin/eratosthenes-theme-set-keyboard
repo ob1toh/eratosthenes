@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# eratosthenes:summary=Apply the current theme keyboard color to supported keyboards
+# eratosthenes:hidden=true
+
+eratosthenes-theme-set-keyboard-asus-rog
+eratosthenes-theme-set-keyboard-f16

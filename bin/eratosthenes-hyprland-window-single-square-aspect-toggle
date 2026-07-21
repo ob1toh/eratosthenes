@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# eratosthenes:summary=Toggle single-window square aspect ratio.
+
+case $(eratosthenes-hyprland-toggle single-window-aspect-ratio) in
+  on) eratosthenes-notification-send -g  "Enable single-window square aspect ratio" ;;
+  off) eratosthenes-notification-send -g  "Disable single-window square aspect ratio" ;;
+esac

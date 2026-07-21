@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Print the active release channel (always stable for standard Arch)
+
+echo "stable"

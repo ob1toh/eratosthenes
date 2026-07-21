@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# eratosthenes:summary=Launch a floating terminal with the Eratosthenes presentation wrapper
+# eratosthenes:args=<command>
+
+cmd="$*"
+exec setsid uwsm-app -- xdg-terminal-exec --app-id=org.eratosthenes.terminal --title=Eratosthenes -e bash -c "eratosthenes-show-logo; $cmd; if (( \$? != 130 )); then eratosthenes-show-done; fi"

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# eratosthenes:summary=Refresh the current theme from its templates.
+
+THEME_NAME_PATH="$HOME/.config/eratosthenes/current/theme.name"
+
+if [[ -f $THEME_NAME_PATH ]]; then
+  ERATOSTHENES_THEME_SKIP_BACKGROUND=1 eratosthenes-theme-set "$(cat $THEME_NAME_PATH)"
+fi

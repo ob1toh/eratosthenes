@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# eratosthenes:summary=Show Eratosthenes bin metadata fields and defaults
+# eratosthenes:args=[--json]
+
+set -euo pipefail
+
+show_json() {
+  jq -n '{
+    ok: true,
+    defaults: {
+      group: "first filename segment after eratosthenes-",
+      name: "remaining filename segments with dashes converted to spaces",
+      route: "eratosthenes <group> <name>",
+      binary: "filename",
+      requires_sudo: false
+    },
+    fields: [
+      {name: "summary", required: true, type: "string", note: "One-line human and agent-facing description."},
+      {name: "group", required: false, type: "string", note: "Only set when the route group should differ from the filename-derived group."},
+      {name: "name", required: false, type: "string", note: "Only set when the route name should differ from the filename-derived name. May be empty for root commands."},
+      {name: "args", required: false, type: "string", note: "Only set when the command accepts arguments."},
+      {name: "examples", required: false, type: "string", note: "Pipe-separated examples."},
+      {name: "aliases", required: false, type: "string", note: "Pipe-separated alternate routes, e.g. eratosthenes screenshot."},
+      {name: "requires-sudo", required: false, type: "true", default: false, note: "Only include when true."},
+      {name: "hidden", required: false, type: "true", default: false, note: "Hide from default command listings; visible with --all."}
+    ]
+  }'
+}
+
+show_help() {
+  cat <<'EOF'
+Eratosthenes bin metadata
+
+Metadata lives in the top comment block of each executable bin/eratosthenes-* file.
+Keep it slim: define only fields that are required or override defaults.
+
+Required:
+  # eratosthenes:summary=<one-line description>
+
+Inferred defaults:
+  group         first filename segment after eratosthenes-
+  name          remaining filename segments, with dashes converted to spaces
+  route         eratosthenes <group> <name>
+  binary        filename
+  requires-sudo false
+  hidden        false
+
+Optional fields:
+  # eratosthenes:group=<group>                  route override only
+  # eratosthenes:name=<name>                    route override only; may be empty
+  # eratosthenes:args=<args>                    only if the command accepts args
+  # eratosthenes:examples=<cmd> | <cmd>         pipe-separated examples
+  # eratosthenes:aliases=<route> | <route>      pipe-separated alternate routes
+  # eratosthenes:requires-sudo=true             only when true
+  # eratosthenes:hidden=true                    hide from default command listings
+
+Do not define:
+  binary      inferred from filename
+  usage       derived from route + args
+  false flags or empty args
+
+Examples:
+  # eratosthenes:summary=Restart Walker and related user services
+
+  # eratosthenes:summary=Take a screenshot
+  # eratosthenes:group=capture
+  # eratosthenes:args=[smart|region|windows|fullscreen] [slurp|copy] [--editor=<name>]
+  # eratosthenes:examples=eratosthenes screenshot | eratosthenes capture screenshot region
+  # eratosthenes:aliases=eratosthenes screenshot
+EOF
+}
+
+case "${1:-}" in
+--json)
+  show_json
+  ;;
+--help | -h)
+  show_help
+  ;;
+"")
+  show_help
+  ;;
+*)
+  echo "Unknown option: $1" >&2
+  show_help >&2
+  exit 2
+  ;;
+esac

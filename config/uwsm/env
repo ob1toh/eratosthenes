@@ -1,0 +1,11 @@
+# Changes require a restart to take effect.
+
+# Ensure Eratosthenes bins are in the path
+export ERATOSTHENES_PATH=$HOME/.local/share/eratosthenes
+export PATH=$ERATOSTHENES_PATH/bin:$PATH:$HOME/.local/bin
+
+# Set default terminal and editor
+source ~/.config/uwsm/default
+
+# Activate mise if present on the system
+eratosthenes-cmd-present mise && eval "$(mise activate bash --shims)"

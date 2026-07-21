@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Show the current battery status notification
+
+eratosthenes-notification-send -g 󰁹 -u low "$(eratosthenes-battery-status)"

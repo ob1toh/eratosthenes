@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Suggestion
+    url: https://github.com/ob1toh/eratosthenes/discussions/categories/suggestions
+    about: Suggest a new feature, change to existing feature, or other ideas in Discussions.
+  - name: Support
+    url: https://github.com/ob1toh/eratosthenes/discussions
+    about: Need help? Start a Discussion for support with any issues. GitHub issues should be used for verified bugs only.

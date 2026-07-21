@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# eratosthenes:summary=Install packages if missing (tries pacman first, then yay for AUR)
+# eratosthenes:args=<packages...>
+# eratosthenes:examples=eratosthenes pkg add jq ripgrep
+# eratosthenes:requires-sudo=true
+
+if ! eratosthenes-pkg-missing "$@"; then
+  exit 0
+fi
+
+# Separate pacman and AUR packages
+pacman_pkgs=()
+aur_pkgs=()
+
+for pkg in "$@"; do
+  if pacman -Si "$pkg" &>/dev/null 2>&1; then
+    pacman_pkgs+=("$pkg")
+  else
+    aur_pkgs+=("$pkg")
+  fi
+done
+
+# Install pacman packages
+if ((${#pacman_pkgs[@]} > 0)); then
+  sudo pacman -S --noconfirm --needed --overwrite='*' "${pacman_pkgs[@]}" || exit 1
+fi
+
+# Install AUR packages via yay
+if ((${#aur_pkgs[@]} > 0)); then
+  if ! command -v yay &>/dev/null; then
+    echo "yay not found, can't install AUR packages: ${aur_pkgs[*]}" >&2
+    exit 1
+  fi
+  yay -S --noconfirm --needed "${aur_pkgs[@]}" || exit 1
+fi
+
+# Verify all packages installed
+for pkg in "$@"; do
+  if ! pacman -Q "$pkg" &>/dev/null; then
+    echo -e "\033[31mError: Package '$pkg' did not install\033[0m" >&2
+    exit 1
+  fi
+done
+
+exit 0

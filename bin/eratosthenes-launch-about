@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Launch the fastfetch TUI that gives information about the current system.
+
+exec eratosthenes-launch-or-focus-tui "bash -c 'fastfetch; read -n 1 -s'"

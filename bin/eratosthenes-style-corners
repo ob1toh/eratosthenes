@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# eratosthenes:summary=Set Hyprland, Hyprlock, Mako, and Walker corners to sharp or round
+# eratosthenes:args=<sharp|round>
+# eratosthenes:examples=eratosthenes style corners round | eratosthenes style corners sharp
+
+if [[ $1 != "sharp" && $1 != "round" ]]; then
+  echo "Usage: eratosthenes-style-corners <sharp|round>"
+  exit 1
+fi
+
+eratosthenes-style-corners-hyprland "$1"
+eratosthenes-style-corners-hyprlock "$1"
+eratosthenes-style-corners-mako "$1"
+eratosthenes-style-corners-walker "$1"
+
+case $1 in
+  sharp) eratosthenes-notification-send "Sharp corners enabled" -g 󰝣 ;;
+  round) eratosthenes-notification-send "Round corners enabled" -g 󰘇 ;;
+esac

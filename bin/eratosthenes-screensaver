@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Run the eratosthenes screensaver (placeholder - opens terminal screensaver)
+
+hyprctl dispatch exec "hyprctl dispatch fullscreen 0"

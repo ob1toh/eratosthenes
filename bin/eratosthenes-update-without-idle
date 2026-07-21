@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# eratosthenes:summary=No-op now that eratosthenes-update-perform is responsible for idle management.
+# eratosthenes:hidden=true

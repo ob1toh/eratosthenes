@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Launch the Eratosthenes audio controls TUI (provided by wiremix).
+
+eratosthenes-launch-or-focus-tui wiremix

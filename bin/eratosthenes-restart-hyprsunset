@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Restart the hyprsunset service (used for blue light filtering/night light).
+
+eratosthenes-restart-app hyprsunset

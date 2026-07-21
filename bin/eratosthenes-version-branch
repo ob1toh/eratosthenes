@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Print the current Eratosthenes git branch
+
+echo $(git -C "$ERATOSTHENES_PATH" rev-parse --abbrev-ref HEAD)

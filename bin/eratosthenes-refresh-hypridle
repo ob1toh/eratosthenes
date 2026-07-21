@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# eratosthenes:summary=Overwrite the user config for hypridle with the Eratosthenes default and restart the service.
+
+eratosthenes-refresh-config hypr/hypridle.conf
+eratosthenes-restart-hypridle

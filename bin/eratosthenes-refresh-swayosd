@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# eratosthenes:summary=Overwrite the user configs for swayosd (controls on-screen feedback for changing volume/songs etc) with the Eratosthenes defaults and restart the service.
+
+eratosthenes-refresh-config swayosd/config.toml
+eratosthenes-refresh-config swayosd/style.css
+eratosthenes-restart-swayosd

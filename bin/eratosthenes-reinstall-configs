@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# eratosthenes:summary=Reset all Eratosthenes user configs to the defaults
+# eratosthenes:requires-sudo=true
+
+set -e
+
+# Overwrite all user configs with the Eratosthenes defaults.
+
+if (( EUID == 0 )); then
+  echo "Error: This script should not be run as root"
+  exit 1
+fi
+
+echo "Resetting all Eratosthenes configs"
+cp -R ~/.local/share/eratosthenes/config/* ~/.config/
+cp ~/.local/share/eratosthenes/default/bashrc ~/.bashrc
+echo '[[ -f ~/.bashrc ]] && . ~/.bashrc' | tee ~/.bash_profile >/dev/null
+
+$(bash $ERATOSTHENES_PATH/install/config/theme.sh)
+
+eratosthenes-refresh-limine
+eratosthenes-refresh-plymouth
+echo "Note: Neovim config not included in eratosthenes"

@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# eratosthenes:summary=Install and configure Voxtype dictation
+# eratosthenes:requires-sudo=true
+
+set -e
+
+# Install voxtype and configure it for use.
+
+if gum confirm "Install Voxtype + AI model (~150MB) to enable dictation?"; then
+  eratosthenes-pkg-add wtype voxtype-bin
+
+  # Setup voxtype
+  mkdir -p ~/.config/voxtype
+  cp $ERATOSTHENES_PATH/default/voxtype/config.toml ~/.config/voxtype/
+
+  voxtype setup --download --no-post-install
+  if eratosthenes-hw-vulkan; then
+    voxtype setup gpu --enable || true
+  fi
+  voxtype setup systemd
+
+  eratosthenes-restart-waybar
+  notify-send "    Voxtype Dictation Ready" "Hold F9 to dictate (or toggle with Super + Ctrl + X)." -t 10000
+fi

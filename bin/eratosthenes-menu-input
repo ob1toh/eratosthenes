@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# eratosthenes:summary=Prompt for text input with Walker
+# eratosthenes:group=menu
+# eratosthenes:name=input
+# eratosthenes:args=prompt [walker args...]
+# eratosthenes:examples=eratosthenes menu input Reminder|eratosthenes-menu-input "Reminder in minutes" --width 400
+
+set -euo pipefail
+
+prompt="${1:-Input}"
+if (( $# > 0 )); then
+  shift
+fi
+
+eratosthenes-launch-walker --dmenu --inputonly --width 295 --minheight 1 --maxheight 1 -p "$prompt…" "$@" 2>/dev/null

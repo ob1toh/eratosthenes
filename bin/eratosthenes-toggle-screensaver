@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# eratosthenes:summary=Toggle screensaver availability
+
+eratosthenes-toggle \
+  --enabled-notification "󱄄   Screensaver disabled" \
+  --disabled-notification "󱄄   Screensaver enabled" \
+  screensaver-off

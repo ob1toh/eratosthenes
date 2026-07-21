@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# eratosthenes:summary=Wrapper for swayosd-client that targets the currently focused monitor.
+# eratosthenes:args=<swayosd-client-args...>
+
+exec swayosd-client --monitor "$(eratosthenes-hyprland-monitor-focused)" "$@"

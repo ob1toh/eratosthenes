@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# eratosthenes:summary=Apply the current theme keyboard color to ASUS ROG keyboards
+# eratosthenes:hidden=true
+
+ASUSCTL_THEME=~/.config/eratosthenes/current/theme/keyboard.rgb
+
+if eratosthenes-cmd-present asusctl; then
+  asusctl aura effect static -c $(sed 's/^#//' $ASUSCTL_THEME)
+fi

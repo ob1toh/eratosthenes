@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# eratosthenes:summary=Enable, disable, toggle, or recover the internal laptop display
+# eratosthenes:args=<on|off|toggle|recover>
+
+TOGGLE="internal-monitor-disable"
+TOGGLE_FLAG="$HOME/.local/state/eratosthenes/toggles/hypr/$TOGGLE.lua"
+MIRROR_TOGGLE="internal-monitor-mirror"
+
+# Get internal monitor name dynamically
+INTERNAL=$(hyprctl monitors -j | jq -r '.[] | select(.name | contains("eDP")).name' | head -n 1)
+
+on() {
+  if eratosthenes-hyprland-toggle-enabled $TOGGLE; then
+    eratosthenes-hyprland-toggle $TOGGLE off
+    eratosthenes-notification-send -g 󰍹 "Laptop display enabled"
+  fi
+}
+
+off() {
+  if ! eratosthenes-hw-external-monitors; then
+    eratosthenes-notification-send -g 󰍹 "Can't disable the only active display"
+    exit 1
+  fi
+
+  if eratosthenes-hyprland-toggle-disabled $TOGGLE && eratosthenes-hyprland-toggle-disabled $MIRROR_TOGGLE; then
+    printf 'hl.monitor({ output = "%s", disabled = true })\n' "$INTERNAL" >"$TOGGLE_FLAG"
+    eratosthenes-notification-send -g 󰍹 "Laptop display disabled"
+    hyprctl reload
+  fi
+}
+
+recover() {
+  if ! eratosthenes-hw-external-monitors && eratosthenes-hyprland-toggle-enabled $TOGGLE; then
+    eratosthenes-hyprland-toggle $TOGGLE off
+  fi
+}
+
+toggle() {
+  if eratosthenes-hyprland-toggle-enabled $TOGGLE; then
+    on
+  else
+    off
+  fi
+}
+
+case "$1" in
+  on) on ;;
+  off) off ;;
+  toggle) toggle ;;
+  recover) recover ;;
+  *)
+    echo "Usage: $(basename "$0") {on|off|toggle|recover}" >&2
+    exit 1
+    ;;
+esac

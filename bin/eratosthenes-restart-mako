@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Reload mako configuration (used by the Eratosthenes theme switching).
+
+makoctl reload

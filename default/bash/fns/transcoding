@@ -1,0 +1,33 @@
+# Transcoding helpers have moved to eratosthenes-transcode.
+
+transcode-video-1080p() {
+  eratosthenes-transcode "$1" mp4 1080p
+}
+
+transcode-video-4K() {
+  eratosthenes-transcode "$1" mp4 4k
+}
+
+transcode-video-gif() {
+  eratosthenes-transcode "$1" gif 1080p
+}
+
+img2jpg() {
+  eratosthenes-transcode "$1" jpg high
+}
+
+img2jpg-small() {
+  eratosthenes-transcode "$1" jpg low
+}
+
+img2jpg-medium() {
+  eratosthenes-transcode "$1" jpg medium
+}
+
+img2jpg-large() {
+  eratosthenes-transcode "$1" jpg high
+}
+
+img2png() {
+  eratosthenes-transcode "$1" png high
+}

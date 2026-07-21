@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Reload btop configuration (used by the Eratosthenes theme switching).
+
+pkill -SIGUSR2 btop

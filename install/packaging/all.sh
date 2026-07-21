@@ -1,0 +1,12 @@
+run_logged $ERATOSTHENES_INSTALL/packaging/yay.sh
+run_logged $ERATOSTHENES_INSTALL/packaging/base.sh
+run_logged $ERATOSTHENES_INSTALL/packaging/fonts.sh
+run_logged $ERATOSTHENES_INSTALL/packaging/nvim.sh
+run_logged $ERATOSTHENES_INSTALL/packaging/icons.sh
+run_logged $ERATOSTHENES_INSTALL/packaging/webapps.sh
+run_logged $ERATOSTHENES_INSTALL/packaging/tuis.sh
+run_logged $ERATOSTHENES_INSTALL/packaging/npm.sh
+run_logged $ERATOSTHENES_INSTALL/packaging/asus-rog.sh
+run_logged $ERATOSTHENES_INSTALL/packaging/framework16.sh
+run_logged $ERATOSTHENES_INSTALL/packaging/dell-xps-touchpad-haptics.sh
+run_logged $ERATOSTHENES_INSTALL/packaging/surface.sh

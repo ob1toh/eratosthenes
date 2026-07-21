@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# eratosthenes:summary=Overwrite the user tmux config with the Eratosthenes default and reload tmux.
+
+eratosthenes-refresh-config tmux/tmux.conf
+eratosthenes-restart-tmux

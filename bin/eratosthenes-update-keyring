@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# eratosthenes:summary=Ensure the Arch keyring is up to date
+# eratosthenes:requires-sudo=true
+
+echo -e "\e[32m\nUpdate Arch signing keys\e[0m"
+sudo pacman -Sy --noconfirm archlinux-keyring >/dev/null 2> >(grep -vE '^warning: archlinux-keyring-[^ ]+ is up to date -- reinstalling$' >&2)
+echo "Keys are correct"

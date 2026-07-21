@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Show the current weather notification
+
+eratosthenes-notification-send -g $(eratosthenes-weather-icon) -u low "$(eratosthenes-weather-status)"

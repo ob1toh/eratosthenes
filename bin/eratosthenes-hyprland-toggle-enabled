@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# eratosthenes:summary=Check if a Hyprland toggle is currently enabled.
+# eratosthenes:args=<flag-name>
+
+[[ -f "$HOME/.local/state/eratosthenes/toggles/hypr/$1.lua" ]]

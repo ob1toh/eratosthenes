@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# eratosthenes:summary=Display the Eratosthenes ASCII art logo
+
+LOGO_FILE="${1:-$HOME/.config/eratosthenes/branding/logo.txt}"
+
+if [[ -f $LOGO_FILE ]]; then
+  cat "$LOGO_FILE"
+else
+  # Fallback: try the default branding
+  DEFAULT_LOGO="${ERATOSTHENES_PATH:-$HOME/.local/share/eratosthenes}/default/branding/logo.txt"
+  if [[ -f $DEFAULT_LOGO ]]; then
+    cat "$DEFAULT_LOGO"
+  else
+    echo "Eratosthenes"
+  fi
+fi

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# eratosthenes:summary=Overwrite the user config for the Plymouth drive decryption and boot sequence with the Eratosthenes default and rebuild it.
+# eratosthenes:requires-sudo=true
+
+sudo cp -r ~/.local/share/eratosthenes/default/plymouth/* /usr/share/plymouth/themes/eratosthenes/
+sudo plymouth-set-default-theme eratosthenes
+
+if command -v limine-mkinitcpio &>/dev/null; then
+  sudo limine-mkinitcpio
+else
+  sudo mkinitcpio -P
+fi

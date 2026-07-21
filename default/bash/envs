@@ -1,0 +1,11 @@
+# Editor used by CLI
+export SUDO_EDITOR="$EDITOR"
+export BAT_THEME=ansi
+
+# Color man pages with bat
+export MANROFFOPT="-c"
+export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
+# Duplicated from .config/uwsm/env so SSH works too
+export ERATOSTHENES_PATH=$HOME/.local/share/eratosthenes
+export PATH=$ERATOSTHENES_PATH/bin:$PATH:$HOME/.local/bin

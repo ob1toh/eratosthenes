@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# eratosthenes:summary=Edit, set, or reset screensaver branding (placeholder)
+# eratosthenes:group=branding
+# eratosthenes:name=screensaver
+# eratosthenes:hidden=true
+
+echo "Branding feature not available in eratosthenes"

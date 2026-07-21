@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Overwrite the user config for hyprlock with the Eratosthenes default.
+
+eratosthenes-refresh-config hypr/hyprlock.conf

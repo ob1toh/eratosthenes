@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# eratosthenes:summary=Launch the Eratosthenes wifi controls (provided by the Impala TUI).
+
+rfkill unblock wifi
+eratosthenes-launch-or-focus-tui impala

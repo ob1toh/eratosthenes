@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# eratosthenes:summary=Install Zed Editor and configure it with the current Eratosthenes theme
+
+echo "Installing Zed Editor..."
+eratosthenes-pkg-add zed omazed
+
+# Apply Eratosthenes theme to Zed
+omazed setup
+
+setsid gtk-launch dev.zed.Zed

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Detect ASUS ExpertBook B9406 series laptops on Intel Panther Lake.
+
+eratosthenes-hw-match "B9406" && eratosthenes-hw-intel-ptl

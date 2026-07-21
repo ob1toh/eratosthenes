@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# eratosthenes:summary=Overwrite all the user Hyprland Lua configs in ~/.config/hypr with the Eratosthenes defaults.
+
+eratosthenes-refresh-config hypr/.luarc.json
+eratosthenes-refresh-config hypr/autostart.lua
+eratosthenes-refresh-config hypr/bindings.lua
+eratosthenes-refresh-config hypr/input.lua
+eratosthenes-refresh-config hypr/looknfeel.lua
+eratosthenes-refresh-config hypr/hyprland.lua
+eratosthenes-refresh-config hypr/monitors.lua
+bash "$ERATOSTHENES_PATH/install/config/eratosthenes-toggles.sh"
+bash "$ERATOSTHENES_PATH/install/config/detect-keyboard-layout.sh"

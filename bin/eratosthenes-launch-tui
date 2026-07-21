@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# eratosthenes:summary=Launch a TUI command in the default terminal with Eratosthenes styling
+# eratosthenes:args=<command> [args...]
+
+exec setsid uwsm-app -- xdg-terminal-exec --app-id=org.eratosthenes.$(basename $1) -e "$1" "${@:2}"

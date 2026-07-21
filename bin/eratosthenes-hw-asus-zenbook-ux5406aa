@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Detect ASUS Zenbook UX5406AA series laptops on Intel Panther Lake.
+
+eratosthenes-hw-match "ux5406aa" && eratosthenes-hw-intel-ptl

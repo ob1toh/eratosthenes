@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# eratosthenes:summary=Cache background switcher thumbnails for the current theme
+
+theme_name=$(cat "$HOME/.config/eratosthenes/current/theme.name" 2>/dev/null)
+
+eratosthenes-menu-images \
+  --cache-only \
+  "$HOME/.config/eratosthenes/current/theme/backgrounds" \
+  "$HOME/.config/eratosthenes/backgrounds/$theme_name"

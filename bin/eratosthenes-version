@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# eratosthenes:summary=Print the installed Eratosthenes version
+
+cat $ERATOSTHENES_PATH/version
